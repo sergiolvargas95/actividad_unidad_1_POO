@@ -1,0 +1,45 @@
+@startuml
+class BibliotecaDigital {
+    - String nombre
+    - Long numeroLibros
+    - List<Servidor> servidores
+}
+
+class Libro {
+    - String titulo
+    - List<Autor> autor
+    - String genero
+}
+
+class Usuario {
+    - String nombre
+    - String apellido
+    - String correo
+    - String contrasena
+    - Date fechaNacimiento
+    - List<Libro> librosDescargados
+}
+
+class Servidor {
+    - String nombre
+    - String direccionIp
+}
+
+class Autor {
+    - String nombre
+    - String apellido
+    - Date fechaNacimiento
+    - String nacionalidad
+}
+
+'Relaciones
+
+BibliotecaDigital "1" -- "*...1" Libro : Tiene
+Libro "*...1" -- "*..0" Autor : Autor de
+Usuario "1" -- "0...*" Libro : Descarga
+Servidor "1" -- "*...1" Libro : Almacena
+@enduml
+
+
+
+
